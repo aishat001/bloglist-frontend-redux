@@ -14,13 +14,14 @@ const App = () => {
     <div>
       <Router key={Blog.id}>
         <Header/>
-        <Notification />
         <Switch key={Blog.id}>
           <Route path="/" exact component={Blog}/>
           <Route path="/users" exact component={Users}/>
           <Route>404 not found</Route>
         </Switch>
       </Router>
+      <Notification />
+
       <Togglable buttonLabel="create a new note">
         <BlogForm/>
       </Togglable>

@@ -7,12 +7,13 @@ export const initialBlogs = (blogs) => {
     blogs,
   }
 }
-export const fetchBlogFromDb = async () => {
-  return async dispatch => {
-    const blogs = await blogService.getAll()
-    dispatch(initialBlogs(blogs))
-  }
-}
+
+// export const fetchBlogFromDb = async () => {
+//   return async dispatch => {
+//     const blogs = await blogService.getAll()
+//     dispatch(initialBlogs(blogs))
+//   }
+// }
 
 export const createBlog = (newBlog) => {
   return {
@@ -21,17 +22,20 @@ export const createBlog = (newBlog) => {
   }
 }
 
-export const createBlogInDb = async () => {
-  return async dispatch => {
-    const newBlog = await blogService.create()
-    dispatch(createBlog(newBlog))
-  }
-}
+// export const createBlogInDb = async () => {
+//   return async dispatch => {
+//     const newBlog = await blogService.create()
+//     dispatch(createBlog(newBlog))
+//   }
+// }
 
-export const removeBlog = (blogs) => {
-  return {
-    type: ActionTypes.REMOVE_BLOG,
-    data: blogs,
+export const removeBlog = (id) => {
+  return async dispatch => {
+    await blogService.remove(id)
+    dispatch({
+      type: ActionTypes.REMOVE_BLOG,
+      payload: id,
+    })
   }
 }
 
@@ -47,5 +51,12 @@ export const setNotification = (message) => {
 export const removeNotification = () => {
   return {
     type: ActionTypes.REMOVE_NOTIFICATION,
+  }
+}
+
+export const likeBlog = (updatedBlog) => {
+  return {
+    type: ActionTypes.LIKE_BLOG,
+    payload: updatedBlog,
   }
 }

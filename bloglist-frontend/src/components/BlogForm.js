@@ -13,17 +13,20 @@ const BlogForm = () => {
     e.preventDefault()
     const target = e.target
 
+    const getId = () => (100 * Math.random()).toFixed(0)
+
     const object = {
       title : e.target.title.value,
       author : e.target.author.value,
-      url : e.target.url.value
+      url : e.target.url.value,
+      likes: 0,
+      id: getId()
     }
-
+    dispatch(createBlog(object))
     target.title.value = ''
     target.author.value = ''
     target.url.value = ''
 
-    dispatch(createBlog(object))
     dispatch(setNotification('a new note was added'))
     console.log(createBlog(object))
   }

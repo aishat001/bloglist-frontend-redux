@@ -8,38 +8,28 @@ import { removeNotification } from '../redux/actions/blogActions'
 
 const Notification = () => {
   const notification = useSelector(state => state.notification)
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (notification) {
       const timer = setTimeout(() => {
-        dispatch(removeNotification(null))
+        dispatch(removeNotification())
       }, 5000)
       return () => clearTimeout(timer)
     }
   }, [notification, dispatch])
 
-  const style = {
-    border: 'solid',
-    padding: 10,
-    borderWidth: 1,
-    marginBottom: '20px'
-  }
   return (
-    <div className={style}>
-      { notification ?
+    <div>
+      {
+        notification ?
+          <div className="message">
+            {notification}
+          </div>
+          :
+          null
+      }
 
-        <div className="error">{notification}</div>
-        :
-        null}
-
-      {/* <div className="container">
-    {(notification &&
-      <Alert variant="success">
-        {notification}
-      </Alert>
-    )}
-  </div> */}
     </div>
   )
 }

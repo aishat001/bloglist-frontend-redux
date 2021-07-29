@@ -1,22 +1,25 @@
 {
   "Blogs": [
     {
-      "title": "fullstack open 221",
-      "author": "Waheed Aishat",
-      "url":"www.careeraffairs.com",
-      "likes":11
-    },
-    {
       "title": "how to start adire business",
       "url": "none",
-      "like": 1,
-      "author": "waheed aeeshah"
+      "likes": 1,
+      "author": "waheed aeeshah",
+      "id": 5
     },
     {
       "title": "the app state is in redux store",
       "url": "web.com",
-      "like": 1,
-      "author": "Aeeshah"
+      "likes": 11,
+      "author": "Aeeshah",
+      "id": 20
+    },
+    {
+      "title": "how to start adire business",
+      "url": "none",
+      "likes": 10,
+      "author": "waheed aeeshah",
+      "id": 10
     }
   ]
 }
